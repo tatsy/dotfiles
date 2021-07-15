@@ -39,7 +39,7 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug load
 
 # Aliases
 if [ "$(uname)" = "Darwin" ]; then
@@ -51,6 +51,18 @@ else
     alias la='ls -la --color=auto'
     alias ll='ls -la --color=auto'
 fi
+
+alias bd='cd ..'
+
+# Vim
+alias vim=/usr/bin/nvim
+
+# Go
+export GOPATH=/usr/local/go
+export PATH=$PATH:$GOPATH/bin
+
+# zsh auto-suggest
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 
 # Enhancd
 export ENHANCD_FILTER="peco:fzf"
@@ -73,8 +85,24 @@ function peco-history-selection() {
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
-# Vim
-alias vim=/usr/local/bin/nvim
+# GHQ
+setopt hist_ignore_all_dups
+
+function ghq-list-search() {
+    local ghq_select_dir=$(ghq list -p | peco --query "$LBUFFER")
+    if [ -n "$ghq_select_dir" ]; then
+        BUFFER="cd ${ghq_select_dir}"
+        zle accept-line
+    fi
+    zle reset-prompt
+}
+
+zle -N ghq-list-search
+bindkey '^G' ghq-list-search
+
+# bashautocompinit
+autoload -Uz bashcompinit && bashcompinit
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
