@@ -100,6 +100,9 @@ function ghq-list-search() {
 zle -N ghq-list-search
 bindkey '^G' ghq-list-search
 
+# bashautocompinit
+autoload -Uz bashcompinit && bashcompinit
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
