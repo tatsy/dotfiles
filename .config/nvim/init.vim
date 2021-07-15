@@ -6,7 +6,6 @@ set sh=zsh
 set encoding=utf-8
 set t_Co=256
 set fileformats=unix
-language en_US
 
 set smarttab
 set expandtab
@@ -68,6 +67,7 @@ let s:python_path = trim(system('which python'))
 let s:python3_path = trim(system('which python3'))
 if strlen(s:python_path) > 0
     let g:python_host_prog = s:python_path
+    let g:loaded_python_provider = 0
 else
     let g:loaded_python_provider = 0
 endif
