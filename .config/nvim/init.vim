@@ -63,37 +63,28 @@ nnoremap <C-L> <C-W><C-L>
 " ###########################
 " Python
 " ###########################
-let s:python_path = trim(system('which /usr/local/bin/python'))
-let s:python3_path = trim(system('which /usr/local/bin/python3'))
+let s:python_path = '/usr/local/bin/python'
+let s:python3_path = '/usr/local/bin/python3'
 
-if strlen(s:python_path) == 0
-    let s:python_path = trim(system('which /usr/bin/python'))
+if filereadable(s:python_path) == 0
+    let s:python_path = '/usr/bin/python'
 endif
 
-if strlen(s:python3_path) == 0
-    let s:python3_path = trim(system('which /usr/bin/python3'))
+if filereadable(s:python3_path) == 0
+    let s:python3_path = '/usr/bin/python3'
 endif
 
-if strlen(s:python_path) == 0
+if filereadable(s:python_path) == 0
     let s:python_path = trim(system('which python'))
 endif
 
-if strlen(s:python3_path) == 0
+if filereadable(s:python3_path) == 0
     let s:python3_path = trim(system('which python3'))
 endif
 
-if strlen(s:python_path) > 0
-    let g:python_host_prog = s:python_path
-    let g:loaded_python_provider = 0
-else
-    let g:loaded_python_provider = 0
-endif
-
-if strlen(s:python3_path) > 0
-    let g:python3_host_prog = s:python3_path
-else
-    let g:loaded_python3_provider = 0
-endif
+let g:python_host_prog = s:python_path
+let g:loaded_python_provider = 0
+let g:python3_host_prog = s:python3_path
 
 " ###########################
 "    dein
