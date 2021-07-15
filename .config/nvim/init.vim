@@ -6,6 +6,7 @@ set sh=zsh
 set encoding=utf-8
 set t_Co=256
 set fileformats=unix
+language en_US
 
 set smarttab
 set expandtab
