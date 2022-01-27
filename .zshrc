@@ -55,10 +55,11 @@ fi
 alias bd='cd ..'
 
 # Vim
-alias vim=/usr/bin/nvim
+alias vim=nvim
 
 # Go
-export GOPATH=/usr/local/go
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # zsh auto-suggest
@@ -71,13 +72,11 @@ export ENHANCD_DISABLE_HOME=1
 
 # Peco
 function peco-history-selection() {
-    if which tac >/dev/null; then
-        tac="tac"
-    else
-        tac="tail -r"
+    if ! command -v tac &>/dev/null; then
+        alias tac="tail -r"
     fi
 
-    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
+    BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
@@ -106,3 +105,20 @@ autoload -Uz bashcompinit && bashcompinit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/tatsuya/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/tatsuya/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/tatsuya/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/tatsuya/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+(( ! ${+functions[p10k]} )) || p10k finalize
