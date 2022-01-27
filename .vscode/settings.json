@@ -1,0 +1,158 @@
+{
+  // Color theme
+  "workbench.colorTheme": "Ayu Mirage",
+  "workbench.iconTheme": "material-icon-theme",
+  // Editor
+  "editor.wordWrap": "on",
+  "editor.fontFamily": "Cica, 'FiraCode Nerd Font', Consolas, 'Courier New', monospace",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.useTabStops": false,
+  "editor.tabSize": 4,
+  "[cmake,markdown,latex,bibtex]": {
+    "editor.tabSize": 2
+  },
+  "[html,css,javascript,typescript,coffeescript,json,yaml]": {
+    "editor.tabSize": 2
+  },
+  // Explorer
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "workbench.tree.indent": 32,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.DS_Store": true,
+    "**/._*": true,
+  },
+  // Terminal
+  "terminal.integrated.profiles.osx": {
+    "iTerm2": {
+      "path": "/usr/zsh",
+      "icon": "terminal-bash"
+    }
+  },
+  "terminal.integrated.fontFamily": "Cica, 'FiraCode Nerd Font', 'MesloLGS NF', monospace",
+  "terminal.integrated.tabs.enabled": true,
+  // Git
+  "git.ignoreMissingGitWarning": true,
+  "github.gitAuthentication": false,
+  // Debug
+  "debug.internalConsoleOptions": "openOnFirstSessionStart",
+  "debug.console.closeOnEnd": true,
+  "debug.focusWindowOnBreak": true,
+  // Python
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.formatting.provider": "yapf",
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  // Jupyter notebook
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "jupyter.askForKernelRestart": false,
+  // LaTeX
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.zoom": "page-width",
+  "latex-workshop.message.badbox.show": false,
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": [
+        "latexmk",
+      ]
+    },
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-f",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+  ],
+  "extensions.ignoreRecommendations": true,
+  // CMake
+  "cmake.configureOnOpen": false,
+  "cmake.parallelJobs": 4,
+  "[cmake]": {
+    "editor.detectIndentation": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  // Spell checker
+  "cSpell.userWords": [
+    "anisotropic",
+    "backpropagation",
+    "bijective",
+    "binarization",
+    "binarize",
+    "bssrdfs",
+    "convolutional",
+    "convolve",
+    "dataset",
+    "demosaicing",
+    "diagonality",
+    "discretization",
+    "discretize",
+    "discretized",
+    "discretizing",
+    "downscaled",
+    "exitant",
+    "gabor",
+    "homeomorphic",
+    "homography",
+    "invertibility",
+    "isosurface",
+    "lambertian",
+    "microfacet",
+    "multiview",
+    "nonconvex",
+    "nonnegativity",
+    "parallelizable",
+    "perceptron",
+    "polyline",
+    "polylines",
+    "posedness",
+    "precompute",
+    "pretrained",
+    "pretraining",
+    "pseudocode",
+    "quadrangulation",
+    "rasterized",
+    "rasterizing",
+    "recentered",
+    "representability",
+    "reprojected",
+    "reprojecting",
+    "resampled",
+    "resampling",
+    "softmax",
+    "spectralon",
+    "stereopsis",
+    "stereovision",
+    "subproblems",
+    "thresholding",
+    "unclarities",
+    "unclarity",
+    "unduplicated",
+    "upsampling",
+    "voxel",
+    "voxels"
+  ]
+}
