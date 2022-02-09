@@ -1,6 +1,6 @@
 {
   // Color theme
-  "workbench.colorTheme": "Ayu Mirage",
+  "workbench.colorTheme": "Ayu One Dark Pro | Mirage Bordered",
   "workbench.iconTheme": "material-icon-theme",
   // Editor
   "editor.wordWrap": "on",
@@ -9,11 +9,13 @@
   "editor.guides.bracketPairs": "active",
   "editor.useTabStops": false,
   "editor.tabSize": 4,
-  "[cmake,markdown,latex,bibtex]": {
+  "[cmake][markdown][latex][bibtex][yaml]": {
     "editor.tabSize": 2
   },
-  "[html,css,javascript,typescript,coffeescript,json,yaml]": {
-    "editor.tabSize": 2
+  "[html][css][javascript][typescript][coffeescript][json]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   // Explorer
   "files.eol": "\n",
