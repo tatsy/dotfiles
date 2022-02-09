@@ -12,7 +12,7 @@
   "[cmake][markdown][latex][bibtex][yaml]": {
     "editor.tabSize": 2
   },
-  "[html][css][javascript][typescript][coffeescript][json]": {
+  "[html][css][javascript][typescript][coffeescript][json][vue]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
