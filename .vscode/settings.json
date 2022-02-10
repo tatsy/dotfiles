@@ -9,10 +9,10 @@
   "editor.guides.bracketPairs": "active",
   "editor.useTabStops": false,
   "editor.tabSize": 4,
-  "[cmake][markdown][latex][bibtex][yaml]": {
+  "[markdown][latex][bibtex]": {
     "editor.tabSize": 2
   },
-  "[html][css][javascript][typescript][coffeescript][json][vue]": {
+  "[html][css][javascript][typescript][coffeescript][json][yaml][vue][jsonc]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
@@ -25,7 +25,7 @@
     "**/.git": true,
     "**/.svn": true,
     "**/.DS_Store": true,
-    "**/._*": true,
+    "**/._*": true
   },
   // Terminal
   "terminal.integrated.profiles.windows": {
@@ -49,6 +49,19 @@
   "debug.internalConsoleOptions": "openOnFirstSessionStart",
   "debug.console.closeOnEnd": true,
   "debug.focusWindowOnBreak": true,
+  // C/C++
+  "[c][cpp][cuda]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools",
+    "editor.formatOnSave": true
+  },
+  // CMake
+  "cmake.configureOnOpen": false,
+  "cmake.parallelJobs": 4,
+  "[cmake]": {
+    "editor.detectIndentation": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
   // Python
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": false,
@@ -76,10 +89,8 @@
   "latex-workshop.latex.recipes": [
     {
       "name": "latexmk",
-      "tools": [
-        "latexmk",
-      ]
-    },
+      "tools": ["latexmk"]
+    }
   ],
   "latex-workshop.latex.tools": [
     {
@@ -92,17 +103,9 @@
         "-file-line-error",
         "%DOC%"
       ]
-    },
+    }
   ],
   "extensions.ignoreRecommendations": true,
-  // CMake
-  "cmake.configureOnOpen": false,
-  "cmake.parallelJobs": 4,
-  "[cmake]": {
-    "editor.detectIndentation": true,
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true
-  },
   // Spell checker
   "cSpell.userWords": [
     "anisotropic",
