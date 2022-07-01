@@ -93,20 +93,29 @@ if &compatible
     set nocompatible
 endif
 
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-
 let s:nvim_dir = expand('$HOME/.config/nvim')
 let s:dein_dir = expand('$HOME/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim ' . s:dein_repo_dir
+endif
+execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
-    call dein#load_toml('~/.config/nvim/dein.toml',            {'lazy': 0})
-    call dein#load_toml('~/.config/nvim/dein_lazy.toml',       {'lazy': 1})
-    call dein#load_toml('~/.config/nvim/dein_cpp.toml',        {'lazy': 1})
-    call dein#load_toml('~/.config/nvim/dein_python.toml',     {'lazy': 1})
+    call dein#load_toml(s:nvim_dir . '/dein.toml',            {'lazy': 0})
+    call dein#load_toml(s:nvim_dir . '/dein_lazy.toml',       {'lazy': 1})
+    call dein#load_toml(s:nvim_dir . '/dein_cpp.toml',        {'lazy': 1})
+    call dein#load_toml(s:nvim_dir . '/dein_python.toml',     {'lazy': 1})
 
     call dein#end()
     call dein#save_state()
+endif
+
+if dein#check_install()
+    call dein#install()
 endif
 
 filetype plugin indent on
