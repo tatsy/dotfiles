@@ -44,7 +44,7 @@ repo = 'cespare/vim-toml'
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
-  let g:airline_powerline_fonts = 0
+  let g:airline_powerline_fonts = 1
   let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
   let g:airline#extensions#virtualenv#enabled = 1
   let g:airline#extensions#hunks#enabled = 0
@@ -53,7 +53,7 @@ hook_add = '''
   let g:airline#extensions#ale#warning_symbol = 'W:'
 
   let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#buffer_idx_mode = 1
+  let g:airline#extensions#tabline#buffer_idx_mode = 0
   nmap <C-p>    <Plug>AirlineSelectPrevTab
   nmap <C-n>    <Plug>AirlineSelectNextTab
 '''
