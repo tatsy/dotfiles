@@ -12,6 +12,9 @@ repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'sickill/vim-monokai'
+# hook_add = '''
+#   colorscheme monokai
+# '''
 
 [[plugins]]
 repo = 'joshdick/onedark.vim'
@@ -42,17 +45,22 @@ hook_add = '''
 repo = 'cespare/vim-toml'
 
 [[plugins]]
+repo = 'vim-airline/vim-airline-theme'
+
+[[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
-  let g:airline_powerline_fonts = 1
+  let g:airline_theme = 'badwolf'
+  let g:airline_powerline_fonts = 0
   let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
-  let g:airline#extensions#virtualenv#enabled = 1
+  let g:airline#extensions#virtualenv#enabled = 0
   let g:airline#extensions#hunks#enabled = 0
   let g:airline#extensions#ale#enabled = 1
   let g:airline#extensions#ale#error_symbol = 'E:'
   let g:airline#extensions#ale#warning_symbol = 'W:'
 
   let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#show_buffers = 1
   let g:airline#extensions#tabline#buffer_idx_mode = 0
   nmap <C-p>    <Plug>AirlineSelectPrevTab
   nmap <C-n>    <Plug>AirlineSelectNextTab
