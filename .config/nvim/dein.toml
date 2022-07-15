@@ -45,9 +45,6 @@ hook_add = '''
 repo = 'cespare/vim-toml'
 
 [[plugins]]
-repo = 'vim-airline/vim-airline-theme'
-
-[[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
   let g:airline_theme = 'badwolf'
