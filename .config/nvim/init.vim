@@ -2,7 +2,6 @@
 "    Basic settings
 " ###########################
 
-set sh=zsh
 set encoding=utf-8
 set t_Co=256
 set fileformats=unix
@@ -66,8 +65,14 @@ nnoremap <C-Right> :bnext<CR>
 " ###########################
 " Python
 " ###########################
-let s:python_path = trim(system('which python'))
-let s:python3_path = trim(system('which python3'))
+
+if has('unix')
+    let s:python_path = trim(system('which python'))
+    let s:python3_path = trim(system('which python3'))
+else
+    let s:python_path = "python"
+    let s:python3_path = "python3"
+end
 
 if filereadable(s:python_path) == 0
     let g:python_host_prog = s:python_path
@@ -88,14 +93,15 @@ if &compatible
     set nocompatible
 endif
 
-let s:nvim_dir = expand('$HOME/.config/nvim')
-let s:dein_dir = expand('$HOME/.cache/dein')
+let s:home_dir = expand('$HOME')
+let s:nvim_dir = s:home_dir . '/.config/nvim'
+let s:dein_dir = s:home_dir . '/.cache/dein'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if !isdirectory(s:dein_repo_dir)
     execute '!git clone https://github.com/Shougo/dein.vim ' . s:dein_repo_dir
 endif
-execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+execute 'set runtimepath^=' . s:dein_repo_dir
 
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
