@@ -29,6 +29,16 @@ hook_add = '''
 repo = 'jacoborus/tender.vim'
 
 [[plugins]]
+repo = 'junegunn/fzf'
+hook_done_update = 'call fzf#install()'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+hook_add = '''
+    set runtimepath+=~/.fzf
+'''
+
+[[plugins]]
 repo = 'luochen1990/rainbow'
 hook_add = '''
     let g:raibow_active = 1
