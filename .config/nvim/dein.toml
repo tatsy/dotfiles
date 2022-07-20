@@ -12,9 +12,9 @@ repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'sickill/vim-monokai'
-# hook_add = '''
-#   colorscheme monokai
-# '''
+hook_add = '''
+  colorscheme monokai
+'''
 
 [[plugins]]
 repo = 'joshdick/onedark.vim'
@@ -40,6 +40,9 @@ hook_add = '''
     let g:indent_guides_enable_on_vim_startup = 1
     let g:indent_guides_auto_colors = 1
 '''
+
+[[plugins]]
+repo = 'mg979/vim-visual-multi'
 
 [[plugins]]
 repo = 'cespare/vim-toml'

@@ -9,20 +9,18 @@ repo = 'davidhalter/jedi-vim'
 on_ft = 'python'
 hook_add = '''
   let g:jedi#auto_initialization = 1
-  let g:jedi#auto_vim_configuration = 0
-  let g:jedi#smart_auto_mappings = 0
-  let g:jedi#completions_enabled = 0
+  let g:jedi#auto_vim_configuration = 1
 
   let g:jedi#use_tabs_not_buffers = 1
   let g:jedi#show_call_signatures = "1"
-  let g:jedi#popup_on_dot = 0
+  let g:jedi#popup_on_dot = 1
 
-  let g:jedi#goto_command = "<Leader>d"
+  let g:jedi#completions_command = "<C-Space>"
+  let g:jedi#goto_command = ""
   let g:jedi#goto_assignments_command = "<Leader>g"
-  let g:jedi#goto_definitions_command = ""
+  let g:jedi#goto_definitions_command = "<Leader>d"
   let g:jedi#documentation_command = "K"
   let g:jedi#usages_command = "<Leader>n"
-  let g:jedi#completions_command = "<C-Space>"
   let g:jedi#rename_command = "<Leader>r"
   autocmd FileType python setlocal completeopt-=preview
 '''
@@ -33,6 +31,6 @@ repo = 'deoplete-plugins/deoplete-jedi'
 on_ft = 'python'
 hook_add = '''
   let g:deoplete#sources#jedi#statement_length = 50
-  let g:deoplete#sources#jedi#enable_typeinfo = 0
+  let g:deoplete#sources#jedi#enable_typeinfo = 1
   let g:deoplete#sources#jedi#show_docstring = 0
 '''
