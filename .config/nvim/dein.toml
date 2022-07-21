@@ -30,12 +30,14 @@ repo = 'jacoborus/tender.vim'
 
 [[plugins]]
 repo = 'junegunn/fzf'
-hook_done_update = 'call fzf#install()'
+build = './install'
+merged = 0
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
+depends = 'junegunn/fzf'
 hook_add = '''
-    set runtimepath+=~/.fzf
+  set runtimepath+=~/.fzf
 '''
 
 [[plugins]]
