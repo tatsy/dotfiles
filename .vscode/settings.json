@@ -2,6 +2,9 @@
   // Color theme
   "workbench.colorTheme": "Ayu One Dark Pro | Mirage Bordered",
   "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorCustomizations": {
+    "editorWhitespace.foreground": "#656565"
+  },
   // Editor
   "editor.wordWrap": "on",
   "editor.fontFamily": "Cica, 'FiraCode Nerd Font', Consolas, 'Courier New', monospace",
@@ -15,6 +18,10 @@
   "[html][css][javascript][typescript][coffeescript][json][yaml][vue][jsonc]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[latex][bibtex]": {
+    "editor.renderWhitespace": "all",
     "editor.formatOnSave": true
   },
   // Explorer
@@ -104,6 +111,16 @@
         "%DOC%"
       ]
     }
+  ],
+  "latex-workshop.latexindent.path": "/opt/homebrew/bin/latexindent",
+  "latex-workshop.latexindent.args": [
+    "-m",
+    "-l",
+    "-r",
+    "-c",
+    "%DIR%/",
+    "%TMPFILE%",
+    "-y=defaultIndent: '%INDENT%'"
   ],
   "extensions.ignoreRecommendations": true,
   // Spell checker

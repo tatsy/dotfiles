@@ -7,22 +7,31 @@ repo = 'tpope/vim-endwise'
 [[plugins]]
 repo = 'Townk/vim-autoclose'
 
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
+
+# [[plugins]]
+# repo = 'sickill/vim-monokai'
+# hook_add = '''
+#   colorscheme monokai
+# '''
+
+# [[plugins]]
+# repo = 'joshdick/onedark.vim'
+# hook_add = '''
+#   colorscheme onedark
+# '''
+
+# [[plugins]]
+# repo = 'sjl/badwolf'
+# hook_add = '''
+#   colorscheme badwolf
+# '''
 
 [[plugins]]
-repo = 'sickill/vim-monokai'
+repo = 'ayu-theme/ayu-vim'
 hook_add = '''
-  colorscheme monokai
-'''
-
-[[plugins]]
-repo = 'joshdick/onedark.vim'
-
-[[plugins]]
-repo = 'sjl/badwolf'
-hook_add = '''
-  colorscheme badwolf
+  set termguicolors
+  let ayucolor="mirage"
+  colorscheme ayu
 '''
 
 [[plugins]]
@@ -43,14 +52,14 @@ hook_add = '''
 [[plugins]]
 repo = 'luochen1990/rainbow'
 hook_add = '''
-    let g:raibow_active = 1
+  let g:raibow_active = 1
 '''
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 hook_add = '''
-    let g:indent_guides_enable_on_vim_startup = 1
-    let g:indent_guides_auto_colors = 1
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_auto_colors = 1
 '''
 
 [[plugins]]
@@ -60,9 +69,12 @@ repo = 'mg979/vim-visual-multi'
 repo = 'cespare/vim-toml'
 
 [[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
-  let g:airline_theme = 'badwolf'
+  let g:airline_theme = 'ayu_mirage'
   let g:airline_powerline_fonts = 0
   let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
   let g:airline#extensions#virtualenv#enabled = 0
@@ -74,8 +86,8 @@ hook_add = '''
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#show_buffers = 1
   let g:airline#extensions#tabline#buffer_idx_mode = 0
-  nmap <C-p>    <Plug>AirlineSelectPrevTab
-  nmap <C-n>    <Plug>AirlineSelectNextTab
+  nmap <C-p> <Plug>AirlineSelectPrevTab
+  nmap <C-n> <Plug>AirlineSelectNextTab
 '''
 
 [[plugins]]
