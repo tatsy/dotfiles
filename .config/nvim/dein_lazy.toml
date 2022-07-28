@@ -1,4 +1,4 @@
-# [[plugins]]
+[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertEnter'
 hook_add = '''

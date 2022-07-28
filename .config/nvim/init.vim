@@ -117,6 +117,7 @@ endif
 
 if dein#check_install()
     call dein#install()
+    call dein#remote_plugins()
 endif
 
 filetype plugin indent on
