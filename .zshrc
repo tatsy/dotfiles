@@ -60,7 +60,7 @@ alias vim=nvim
 # Go
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # zsh auto-suggest
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
