@@ -106,10 +106,10 @@ execute 'set runtimepath^=' . s:dein_repo_dir
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
-    call dein#load_toml(s:nvim_dir . '/dein.toml',            {'lazy': 0})
-    call dein#load_toml(s:nvim_dir . '/dein_lazy.toml',       {'lazy': 1})
-    call dein#load_toml(s:nvim_dir . '/dein_cpp.toml',        {'lazy': 1})
-    call dein#load_toml(s:nvim_dir . '/dein_python.toml',     {'lazy': 1})
+    call dein#add(s:nvim_dir . '/dein.toml',            {'lazy': 0})
+    call dein#add(s:nvim_dir . '/dein_lazy.toml',       {'lazy': 1})
+    call dein#add(s:nvim_dir . '/dein_cpp.toml',        {'lazy': 1})
+    call dein#add(s:nvim_dir . '/dein_python.toml',     {'lazy': 1})
 
     call dein#end()
     call dein#save_state()
