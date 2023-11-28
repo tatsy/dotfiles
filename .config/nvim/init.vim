@@ -103,7 +103,7 @@ if !isdirectory(s:dein_repo_dir)
 endif
 execute 'set runtimepath^=' . s:dein_repo_dir
 
-if dein#load_state(s:dein_dir)
+"if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
     call dein#add(s:nvim_dir . '/dein.toml',            {'lazy': 0})
@@ -113,7 +113,7 @@ if dein#load_state(s:dein_dir)
 
     call dein#end()
     call dein#save_state()
-endif
+"endif
 
 if dein#check_install()
     call dein#install()
