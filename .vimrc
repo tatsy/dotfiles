@@ -18,7 +18,7 @@ set wrapscan
 
 set list
 set number
-set listchars=tab:»-,trail:-
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:␣
 
 set ambiwidth=double
 if has('path_extra')
@@ -44,17 +44,3 @@ set showmatch
 set tabstop=4
 set whichwrap=b,s,h,l,<,>,[,]
 set nowrapscan
-
-"Vundle
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'cohama/lexima.vim'
-
-call vundle#end()
-
-filetype plugin indent on
-
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"

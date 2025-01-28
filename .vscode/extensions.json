@@ -1,0 +1,34 @@
+{
+  "recommendations": [
+    // General
+    "ms-vscode-remote.remote-ssh",
+    // Theme
+    "teabyii.ayu",
+    "PKief.material-icon-theme",
+    // C/C++
+    "ms-vscode.cpptools",
+    "ms-vscode.cpptools-themes",
+    "ms-vscode.cpptools-extension-pack",
+    "ms-vscode.cmake-tools",
+    // Python
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.black-formatter",
+    "ms-python.isort",
+    "ms-python.debugpy",
+    "ms-python.flake8",
+    "ms-python.mypy-type-checker",
+    "eeyore.yapf",
+    // Jupyter notebook
+    "ms-toolsai.jupyter",
+    // HTML/CSS
+    "ms-vscode.live-server",
+    "esbenp.prettier-vscode",
+    // Markdown
+    "yzhang.markdown-all-in-one",
+    "DavidAnson.vscode-markdownlint",
+    "shd101wyy.markdown-preview-enhanced",
+    // LaTeX
+    "James-Yu.latex-workshop"
+  ]
+}

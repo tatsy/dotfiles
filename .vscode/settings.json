@@ -1,6 +1,6 @@
 {
   // Color theme
-  "workbench.colorTheme": "Ayu One Dark Pro | Mirage Bordered",
+  "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorCustomizations": {
     "editorWhitespace.foreground": "#656565"
@@ -20,10 +20,21 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
-  "[latex][bibtex]": {
-    "editor.renderWhitespace": "all",
+  "[markdown]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
     "editor.formatOnSave": true
   },
+  // TOML
+  "[toml]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "evenBetterToml.formatter.allowedBlankLines": -1,
+  "evenBetterToml.formatter.columnWidth": 120,
+  "evenBetterToml.formatter.indentEntries": true,
+  "evenBetterToml.formatter.indentString": "  ",
+  "evenBetterToml.formatter.indentTables": true,
   // Explorer
   "files.eol": "\n",
   "files.insertFinalNewline": true,
@@ -41,16 +52,20 @@
       "icon": "terminal-powershell"
     }
   },
+  "terminal.integrated.defaultProfile.windows": "pwsh",
   "terminal.integrated.profiles.osx": {
-    "iTerm2": {
-      "path": "/usr/zsh",
+    "fish": {
+      "path": "/opt/homebrew/bin/fish",
+      "args": ["-l"],
       "icon": "terminal-bash"
     }
   },
+  "terminal.integrated.defaultProfile.osx": "fish",
   "terminal.integrated.fontFamily": "Cica, 'FiraCode Nerd Font', 'MesloLGS NF', monospace",
   "terminal.integrated.tabs.enabled": true,
   // Git
   "git.ignoreMissingGitWarning": true,
+  "git.openRepositoryInParentFolders": "never",
   "github.gitAuthentication": false,
   // Debug
   "debug.internalConsoleOptions": "openOnFirstSessionStart",
@@ -61,25 +76,27 @@
     "editor.defaultFormatter": "ms-vscode.cpptools",
     "editor.formatOnSave": true
   },
+  "C_Cpp.clang_format_sortIncludes": false,
   // CMake
   "cmake.configureOnOpen": false,
   "cmake.parallelJobs": 4,
+  "cmake.pinnedCommands": [
+    "workbench.action.tasks.configureTaskRunner",
+    "workbench.action.tasks.runTask"
+  ],
   "[cmake]": {
     "editor.detectIndentation": true,
     "editor.tabSize": 2,
     "editor.insertSpaces": true
   },
   // Python
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": false,
-  "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": true,
-  "python.formatting.provider": "yapf",
   "[python]": {
     "editor.tabSize": 4,
     "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "always"
     }
   },
   // Jupyter notebook
@@ -87,11 +104,16 @@
     "default": "right",
     "jupyter-notebook": "left"
   },
+  "notebook.lineNumbers": "on",
   "jupyter.askForKernelRestart": false,
   // LaTeX
+  "[latex][bibtex]": {
+    "editor.renderWhitespace": "all",
+    "editor.formatOnSave": true
+  },
   "latex-workshop.view.pdf.viewer": "tab",
   "latex-workshop.view.pdf.zoom": "page-width",
-  "latex-workshop.message.badbox.show": false,
+  "latex-workshop.message.badbox.show": "none",
   "latex-workshop.latex.autoBuild.run": "onSave",
   "latex-workshop.latex.recipes": [
     {
@@ -112,17 +134,15 @@
       ]
     }
   ],
-  "latex-workshop.latexindent.path": "/opt/homebrew/bin/latexindent",
-  "latex-workshop.latexindent.args": [
+  "latex-workshop.formatting.latexindent.path": "latexindent",
+  "latex-workshop.formatting.latexindent.args": [
+    "-l=%DIR%/localSettings.yaml",
     "-m",
-    "-l",
     "-r",
-    "-c",
-    "%DIR%/",
-    "%TMPFILE%",
-    "-y=defaultIndent: '%INDENT%'"
+    "-c=%DIR%/",
+    "-y=defaultIndent: '%INDENT%'",
+    "%TMPFILE%"
   ],
-  "extensions.ignoreRecommendations": true,
   // Spell checker
   "cSpell.userWords": [
     "anisotropic",
