@@ -21,6 +21,8 @@ zplug "mollifier/cd-gitroot"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "modules/history-substring-search", from:prezto, defer:2
 
+zplug "romkatv/powerlevel10k"
+zplug "sindresorhus/pure"
 zstyle ":prezto:module:prompt" theme "pure" 
 
 # Install plugins if there are plugins that have not been installed
