@@ -1,45 +1,10 @@
+# Terminal color
+export TERM=xterm-256color
+
 # Locale
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-
-# zsh/zplug settings
-source "${HOME}/.zplug/init.zsh"
-
-zplug "sorin-ionescu/prezto"
-
-zplug "modules/prompt", from:prezto
-zplug "modules/git", from:prezto
-zplug "modules/autosuggestions", from:prezto
-zplug "modules/completion", from:prezto
-zplug "modules/command-not-found", from:prezto
-zplug "modules/directory", from:prezto
-zplug "modules/environment", from:prezto
-zplug "modules/fasd", from:prezto
-zplug "modules/history", from:prezto
-
-zplug "mafredri/zsh-async"
-zplug "rimraf/k"
-zplug "b4b4r07/enhancd", use:init.sh
-zplug "mollifier/cd-gitroot"
-
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "modules/history-substring-search", from:prezto, defer:2
-
-zplug "romkatv/powerlevel10k"
-zplug "sindresorhus/pure"
-zstyle ":prezto:module:prompt" theme "pure" 
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-# Then, source plugins and add commands to $PATH
-zplug load
 
 # Aliases
 if [ "$(uname)" = "Darwin" ]; then
@@ -53,14 +18,29 @@ else
 fi
 
 alias bd='cd ..'
-
-# Vim
 alias vim=nvim
 
-# Go
+# Clang
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+# Paths
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.cargo/bin
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
+
+# Sheldon
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}"
+SHELDON_CACHE="${CACHE_DIR}/sheldon.zsh"
+SHELDON_TOML="${HOME}/.config/sheldon/plugins.toml"
+
+if [[ ! -r "${SHELDON_CACHE}" || "${SHELDON_TOML}" -nt "${SHELDON_CACHE}" ]]; then
+    mkdir -p "${CACHE_DIR}"
+    sheldon source > "${SHELDON_CACHE}"
+fi
+source "${SHELDON_CACHE}"
+unset CACHE_DIR SHELDON_CACHE SHELDON_TOML
 
 # zsh auto-suggest
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
@@ -101,3 +81,4 @@ bindkey '^G' ghq-list-search
 
 # bashautocompinit
 autoload -Uz bashcompinit && bashcompinit
+

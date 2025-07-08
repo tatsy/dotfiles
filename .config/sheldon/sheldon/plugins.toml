@@ -1,0 +1,30 @@
+shell = "zsh"
+
+[templates]
+defer = "{{ hooks | get: \"pre\" | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks | get: \"post\" | nl }}"
+
+[plugins.oh-my-zsh]
+github = "ohmyzsh/ohmyzsh"
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+use = ['{{ name }}.zsh']
+apply = ["defer"]
+
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+apply = ["defer"]
+
+[plugins.blackbox]
+github = "StackExchange/blackbox"
+
+[plugins.k]
+github = "rimraf/k"
+
+[plugins.passion]
+github = "ChesterYue/ohmyzsh-theme-passion"
+use = ['{{ name }}.zsh-theme']
+apply = ["source"]
