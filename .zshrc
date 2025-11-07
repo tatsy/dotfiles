@@ -21,7 +21,9 @@ alias bd='cd ..'
 alias vim=nvim
 
 # Clang
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+if [ "$(uname)" = "Darwin" ]; then
+    export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+fi
 
 # Paths
 export PATH=$PATH:$HOME/.local/bin
@@ -47,8 +49,9 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 
 # Enhancd
 export ENHANCD_FILTER="peco:fzf"
-export ENHANCD_DISABLE_DOT=1
-export ENHANCD_DISABLE_HOME=1
+export ENHANCD_DISABLE_DOT="false"
+export ENHANCD_DISABLE_HOME="false"
+export ENHANCD_DISABLE_DOUBLE_DOT="false"
 
 # Peco
 function peco-history-selection() {
