@@ -22,10 +22,10 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
     spec = {
         -- import your plugins
-	{ import = "plugins" },
+        { import = "plugins" },
     },
     -- Configure any other settings here.
-    install = { colorsheme = { "habamax" } },
+    install = { colorscheme = { "habamax" } },
     -- automatically check for plugin updates
     checker = { enabled = true },
 })
