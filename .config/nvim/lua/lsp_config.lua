@@ -1,4 +1,19 @@
 require("mason").setup()
+
+vim.lsp.config("*", {
+    capabilities = require("blink.cmp").get_lsp_capabilities(),
+})
+
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim" },
+            },
+        },
+    },
+})
+
 require("mason-lspconfig").setup({
     ensure_installed = {
         "pyright",
@@ -9,19 +24,3 @@ require("mason-lspconfig").setup({
         "taplo",
     },
 })
-
-require("lspconfig").pyright.setup({})
-require("lspconfig").lua_ls.setup({
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim" },
-            },
-        },
-    },
-})
-
-require("lspconfig").bashls.setup({})
-require("lspconfig").yamlls.setup({})
-require("lspconfig").jsonls.setup({})
-require("lspconfig").taplo.setup({})
