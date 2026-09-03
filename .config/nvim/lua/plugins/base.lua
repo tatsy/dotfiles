@@ -36,14 +36,6 @@ return {
             require("nvim-autopairs").setup()
         end,
     },
-    -- rainbow parenthesis
-    {
-        "luochen1990/rainbow",
-        lazy = false,
-        config = function()
-            vim.g.rainbow_active = 1
-        end,
-    },
     -- visualize indentation
     {
         "lukas-reineke/indent-blankline.nvim",
