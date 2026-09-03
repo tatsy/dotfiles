@@ -73,7 +73,7 @@ return {
     -- nerd tree (and dependencies)
     {
         "scrooloose/nerdtree",
-        lasy = true,
+        lazy = true,
         dependencies = {
             "ryanoasis/vim-devicons",
             "tiagofumo/vim-nerdtree-syntax-highlight",
