@@ -117,6 +117,11 @@ if (( $+commands[ghq] && $+commands[peco] )); then
     bindkey '^G' ghq-list-search
 fi
 
+# Starship
+if (( $+commands[starship] )); then
+    eval "$(starship init zsh)"
+fi
+
 # Local overrides
 [[ -r "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
