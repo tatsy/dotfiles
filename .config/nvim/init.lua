@@ -1,3 +1,7 @@
+if vim.fn.has("nvim-0.12") == 0 then
+    error("Neovim 0.12 or later is required")
+end
+
 -- disable netrw for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
