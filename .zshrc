@@ -1,5 +1,4 @@
 # Aliases
-        ;;
 case "$OSTYPE" in
     darwin*)
         alias ls='ls -G'
@@ -19,20 +18,6 @@ if (( $+commands[nvim] )); then
     alias vim=nvim
 fi
 
-# Clang
-case "$OSTYPE" in
-    darwin*)
-        [[ -d /opt/homebrew/opt/llvm/bin ]] &&
-            path=(/opt/homebrew/opt/llvm/bin $path)
-        
-        export LLVM_PREFIX="$(brew --prefix llvm)"
-        export PATH="$LLVM_PREFIX/bin:$PATH"
-        export CC="$LLVM_PREFIX/bin/clang"
-        export CXX="$LLVM_PREFIX/bin/clang++"
-        export CPPFLAGS="-I$LLVM_PREFIX/include"
-        export LDFLAGS="-L$LLVM_PREFIX/lib -L$LLVM_PREFIX/lib/c++"
-esac
-
 # Paths
 typeset -U path PATH
 
@@ -42,6 +27,24 @@ path=(
     "$HOME/go/bin"
     $path
 )
+
+# Clang
+case "$OSTYPE" in
+    darwin*)
+        [[ -d /opt/homebrew/opt/llvm/bin ]] &&
+            path=(/opt/homebrew/opt/llvm/bin $path)
+        
+        LLVM_PREFIX="/opt/homebrew/opt/llvm"
+        if [[ -d "$LLVM_PREFIX/bin" ]]; then
+            path=("$LLVM_PREFIX/bin"
+            export CC="$LLVM_PREFIX/bin/clang"
+            export CXX="$LLVM_PREFIX/bin/clang++"
+            export CPPFLAGS="-I$LLVM_PREFIX/include"
+            export LDFLAGS="-L$LLVM_PREFIX/lib -L$LLVM_PREFIX/lib/c++"
+        fi
+        unset LLVM_PREFIX
+    ;;
+esac
 
 # Sheldon
 if (( $+commands[sheldon] )); then
