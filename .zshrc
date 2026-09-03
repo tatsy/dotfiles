@@ -1,18 +1,22 @@
 # Aliases
-case "$OSTYPE" in
-    darwin*)
-        alias ls='ls -G'
-        alias la='ls -la -G'
-        alias ll='ls -la -G'
-    ;;
-    linux*)
-        alias ls='ls --color=auto'
-        alias la='ls -la --color=auto'
-        alias ll='ls -la --color=auto'
-    ;;
-esac
-
-alias bd='cd ..'
+if (( $+commands[eza] )); then
+    alias ls='eza'
+    alias la='eza -la'
+    alias ll='eza -la --git'
+else
+    case "$OSTYPE" in
+        darwin*)
+            alias ls='ls -G'
+            alias la='ls -la -G'
+            alias ll='ls -la -G'
+        ;;
+        linux*)
+            alias ls='ls --color=auto'
+            alias la='ls -la --color=auto'
+            alias ll='ls -la --color=auto'
+        ;;
+    esac
+fi
 
 if (( $+commands[nvim] )); then
     alias vim=nvim
@@ -60,12 +64,6 @@ fi
 # zsh auto-suggest
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 
-# Enhancd
-export ENHANCD_FILTER="peco:fzf"
-export ENHANCD_DISABLE_DOT="false"
-export ENHANCD_DISABLE_HOME="false"
-export ENHANCD_DISABLE_DOUBLE_DOT="false"
-
 # Peco
 if (( $+commands[peco] )); then
     function peco-history-selection() {
@@ -99,6 +97,15 @@ if (( $+commands[ghq] && $+commands[peco] )); then
     bindkey '^G' ghq-list-search
 fi
 
-# bashautocompinit
-autoload -Uz bashcompinit && bashcompinit
+# Completion
+autoload -Uz compinit
+compinit
+
+autoload -Uz bashcompinit
+bashcompinit
+
+# Zoxide
+if (( $+commands[zoxide] )); then
+    eval "$(zoxide init zsh)"
+fi
 

@@ -3,9 +3,6 @@ shell = "zsh"
 [templates]
 defer = "{{ hooks | get: \"pre\" | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks | get: \"post\" | nl }}"
 
-[plugins.oh-my-zsh]
-github = "ohmyzsh/ohmyzsh"
-
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
@@ -18,20 +15,6 @@ apply = ["defer"]
 github = "zsh-users/zsh-syntax-highlighting"
 apply = ["defer"]
 
-[plugins.autojump]
-github = "wting/autojump"
-dir = "bin"
-apply = ["PATH", "source"]
-
 [plugins.blackbox]
 github = "StackExchange/blackbox"
-
-[plugins.enhancd]
-github = "b4b4r07/enhancd"
-
-[plugins.base16]
-github = "chriskempson/base16-shell"
-
-[plugins.k]
-github = "rimraf/k"
 
