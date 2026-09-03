@@ -84,11 +84,13 @@ fi
 # GHQ
 if (( $+commands[ghq] && $+commands[peco] )); then
     function ghq-list-search() {
-        local ghq_select_dir=$(ghq list -p | peco --query "$LBUFFER")
+        local ghq_select_dir
+        ghq_select_dir=$(ghq list -p | peco --query "$LBUFFER")
+
         if [ -n "$ghq_select_dir" ]; then
-            BUFFER="cd ${ghq_select_dir}"
-            zle accept-line
+            cd -- "$ghq_select_dir"
         fi
+
         zle reset-prompt
     }
 
