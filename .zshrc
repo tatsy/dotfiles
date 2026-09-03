@@ -55,7 +55,12 @@ if (( $+commands[sheldon] )); then
 
     if [[ ! -r "${SHELDON_CACHE}" || "${SHELDON_TOML}" -nt "${SHELDON_CACHE}" ]]; then
         mkdir -p "${CACHE_DIR}"
-        sheldon source > "${SHELDON_CACHE}"
+
+        if sheldon source > "${SHELDON_CACHE}.tmp"; then
+            mv "${SHELDON_CACHE}.tmp" "${SHELDON_CACHE}"
+        else
+            rm -f "${SHELDON_CACHE}.tmp"
+        fi
     fi
     source "${SHELDON_CACHE}"
     unset CACHE_DIR SHELDON_CACHE SHELDON_TOML
