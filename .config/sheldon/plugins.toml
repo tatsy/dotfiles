@@ -15,6 +15,3 @@ apply = ["defer"]
 github = "zsh-users/zsh-syntax-highlighting"
 apply = ["defer"]
 
-[plugins.blackbox]
-github = "StackExchange/blackbox"
-
