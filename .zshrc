@@ -7,42 +7,53 @@ export LC_ALL=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
 # Aliases
-if [ "$(uname)" = "Darwin" ]; then
-    alias ls='ls -G'
-    alias la='ls -la -G'
-    alias ll='ls -la -G'
-else
-    alias ls='ls --color=auto'
-    alias la='ls -la --color=auto'
-    alias ll='ls -la --color=auto'
-fi
+case "$OSTYPE" in
+    darwin*)
+        alias ls='ls -G'
+        alias la='ls -la -G'
+        alias ll='ls -la -G'
+    ;;
+    linux*)
+        alias ls='ls --color=auto'
+        alias la='ls -la --color=auto'
+        alias ll='ls -la --color=auto'
+    ;;
+esac
 
 alias bd='cd ..'
 alias vim=nvim
 
 # Clang
-if [ "$(uname)" = "Darwin" ]; then
-    export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-fi
+case "$OSTYPE" in
+    darwin*)
+        [[ -d /opt/homebrew/opt/llvm/bin ]] &&
+            path=(/opt/homebrew/opt/llvm/bin $path)
+        ;;
+esac
 
 # Paths
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.cargo/bin
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+typeset -U path PATH
+
+path=(
+    "$HOME/.local/bin"
+    "$HOME/.cargo/bin"
+    "$HOME/go/bin"
+    $path
+)
 
 # Sheldon
-CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}"
-SHELDON_CACHE="${CACHE_DIR}/sheldon.zsh"
-SHELDON_TOML="${HOME}/.config/sheldon/plugins.toml"
+if (( $+commands[sheldon] )); then
+    CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}"
+    SHELDON_CACHE="${CACHE_DIR}/sheldon.zsh"
+    SHELDON_TOML="${HOME}/.config/sheldon/plugins.toml"
 
-if [[ ! -r "${SHELDON_CACHE}" || "${SHELDON_TOML}" -nt "${SHELDON_CACHE}" ]]; then
-    mkdir -p "${CACHE_DIR}"
-    sheldon source > "${SHELDON_CACHE}"
+    if [[ ! -r "${SHELDON_CACHE}" || "${SHELDON_TOML}" -nt "${SHELDON_CACHE}" ]]; then
+        mkdir -p "${CACHE_DIR}"
+        sheldon source > "${SHELDON_CACHE}"
+    fi
+    source "${SHELDON_CACHE}"
+    unset CACHE_DIR SHELDON_CACHE SHELDON_TOML
 fi
-source "${SHELDON_CACHE}"
-unset CACHE_DIR SHELDON_CACHE SHELDON_TOML
 
 # zsh auto-suggest
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
@@ -54,33 +65,37 @@ export ENHANCD_DISABLE_HOME="false"
 export ENHANCD_DISABLE_DOUBLE_DOT="false"
 
 # Peco
-function peco-history-selection() {
-    if ! command -v tac &>/dev/null; then
-        alias tac="tail -r"
-    fi
+if (( $+commands[peco] )); then
+    function peco-history-selection() {
+        if ! command -v tac &>/dev/null; then
+            alias tac="tail -r"
+        fi
 
-    BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco`
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
+        BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco`
+        CURSOR=$#BUFFER
+        zle reset-prompt
+    }
 
-zle -N peco-history-selection
-bindkey '^R' peco-history-selection
+    zle -N peco-history-selection
+    bindkey '^R' peco-history-selection
+fi
 
 # GHQ
-setopt hist_ignore_all_dups
+if (( $+commands[ghq] )); then
+    setopt hist_ignore_all_dups
 
-function ghq-list-search() {
-    local ghq_select_dir=$(ghq list -p | peco --query "$LBUFFER")
-    if [ -n "$ghq_select_dir" ]; then
-        BUFFER="cd ${ghq_select_dir}"
-        zle accept-line
-    fi
-    zle reset-prompt
-}
+    function ghq-list-search() {
+        local ghq_select_dir=$(ghq list -p | peco --query "$LBUFFER")
+        if [ -n "$ghq_select_dir" ]; then
+            BUFFER="cd ${ghq_select_dir}"
+            zle accept-line
+        fi
+        zle reset-prompt
+    }
 
-zle -N ghq-list-search
-bindkey '^G' ghq-list-search
+    zle -N ghq-list-search
+    bindkey '^G' ghq-list-search
+fi
 
 # bashautocompinit
 autoload -Uz bashcompinit && bashcompinit
