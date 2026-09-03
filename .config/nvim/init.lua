@@ -52,4 +52,5 @@ vim.api.nvim_set_keymap("n", "<C-Right>", ":bnext<CR>", { noremap = true, silent
 -- lazy.nvim
 require("config.lazy")
 require("lualine_config")
+require("bufferline_config")
 require("lsp_config")
