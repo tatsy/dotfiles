@@ -72,11 +72,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 # Peco
 if (( $+commands[peco] )); then
     function peco-history-selection() {
-        if (( $+commands[tac] )); then
-            BUFFER=$(history -n 1 | tac | awk '!a[$0]++' | peco)
-        else
-            BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | peco)
-        fi
+        BUFFER=$(fc -lnr 1 | awk '!a[$0]++' | peco)
         CURSOR=$#BUFFER
         zle reset-prompt
     }
