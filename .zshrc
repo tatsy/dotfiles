@@ -36,7 +36,7 @@ case "$OSTYPE" in
         
         LLVM_PREFIX="/opt/homebrew/opt/llvm"
         if [[ -d "$LLVM_PREFIX/bin" ]]; then
-            path=("$LLVM_PREFIX/bin"
+            path=("$LLVM_PREFIX/bin" $path)
             export CC="$LLVM_PREFIX/bin/clang"
             export CXX="$LLVM_PREFIX/bin/clang++"
             export CPPFLAGS="-I$LLVM_PREFIX/include"
