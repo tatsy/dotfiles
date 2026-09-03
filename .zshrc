@@ -117,6 +117,11 @@ if (( $+commands[ghq] && $+commands[peco] )); then
     bindkey '^G' ghq-list-search
 fi
 
+# fnm
+if (( $+commands[fnm] )); then
+    eval "$(fnm env --use-on-cd --shell zsh)"
+fi
+
 # Starship
 if (( $+commands[starship] )); then
     eval "$(starship init zsh)"
