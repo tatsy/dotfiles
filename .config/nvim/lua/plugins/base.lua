@@ -69,11 +69,11 @@ return {
                 hlslens.start()
             end, keymap_opts)
             vim.keymap.set("n", "*", function()
-                vim.cmd("normal! *")
+                vim.cmd("normal! " .. vim.v.count1 .. "*")
                 hlslens.start()
             end, keymap_opts)
             vim.keymap.set("n", "#", function()
-                vim.cmd("normal! #")
+                vim.cmd("normal! " .. vim.v.count1 .. "#")
                 hlslens.start()
             end, keymap_opts)
         end,
