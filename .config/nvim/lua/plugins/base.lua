@@ -44,14 +44,13 @@ return {
             vim.g.rainbow_active = 1
         end,
     },
-    -- visuzlize tabs
+    -- visualize indentation
     {
-        "nathanaelkane/vim-indent-guides",
-        lazy = false,
-        config = function()
-            vim.g.indent_guides_enable_on_vim_startup = 1
-            vim.g.indent_guides_auto_colors = 1
-        end,
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {
+            scope = { enabled = false },
+        },
     },
     -- visuzalize search position
     {
