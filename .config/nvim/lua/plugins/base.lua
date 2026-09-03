@@ -78,6 +78,4 @@ return {
             end, keymap_opts)
         end,
     },
-    -- useful word selector
-    { "mg979/vim-visual-multi" },
 }
