@@ -1,27 +1,3 @@
-# Aliases
-if (( $+commands[eza] )); then
-    alias ls='eza'
-    alias la='eza -la'
-    alias ll='eza -la --git'
-else
-    case "$OSTYPE" in
-        darwin*)
-            alias ls='ls -G'
-            alias la='ls -la -G'
-            alias ll='ls -la -G'
-        ;;
-        linux*)
-            alias ls='ls --color=auto'
-            alias la='ls -la --color=auto'
-            alias ll='ls -la --color=auto'
-        ;;
-    esac
-fi
-
-if (( $+commands[nvim] )); then
-    alias vim=nvim
-fi
-
 # Paths
 typeset -U path PATH
 
@@ -47,6 +23,20 @@ case "$OSTYPE" in
     ;;
 esac
 
+# History
+HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=10000
+
+setopt append_history
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+
+# Completion
+autoload -Uz compinit
+compinit
+
 # Sheldon
 if (( $+commands[sheldon] )); then
     CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}"
@@ -66,7 +56,36 @@ if (( $+commands[sheldon] )); then
     unset CACHE_DIR SHELDON_CACHE SHELDON_TOML
 fi
 
-# zsh auto-suggest
+# Aliases
+if (( $+commands[eza] )); then
+    alias ls='eza'
+    alias la='eza -la'
+    alias ll='eza -la --git'
+else
+    case "$OSTYPE" in
+        darwin*)
+            alias ls='ls -G'
+            alias la='ls -la -G'
+            alias ll='ls -la -G'
+        ;;
+        linux*)
+            alias ls='ls --color=auto'
+            alias la='ls -la --color=auto'
+            alias ll='ls -la --color=auto'
+        ;;
+    esac
+fi
+
+if (( $+commands[nvim] )); then
+    alias vim=nvim
+fi
+
+# Zoxide
+if (( $+commands[zoxide] )); then
+    eval "$(zoxide init zsh)"
+fi
+
+# Zsh auto-suggest
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 
 # Peco
@@ -87,7 +106,7 @@ if (( $+commands[ghq] && $+commands[peco] )); then
         local ghq_select_dir
         ghq_select_dir=$(ghq list -p | peco --query "$LBUFFER")
 
-        if [ -n "$ghq_select_dir" ]; then
+        if [[ -n "$ghq_select_dir" ]]; then
             cd -- "$ghq_select_dir"
         fi
 
@@ -96,24 +115,5 @@ if (( $+commands[ghq] && $+commands[peco] )); then
 
     zle -N ghq-list-search
     bindkey '^G' ghq-list-search
-fi
-
-# History
-HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
-HISTSIZE=50000
-SAVEHIST=10000
-
-setopt append_history
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
-setopt hist_reduce_blanks
-
-# Completion
-autoload -Uz compinit
-compinit
-
-# Zoxide
-if (( $+commands[zoxide] )); then
-    eval "$(zoxide init zsh)"
 fi
 
