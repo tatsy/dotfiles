@@ -30,7 +30,12 @@ return {
     },
     -- helpful for editing
     { "tpope/vim-endwise" },
-    { "Townk/vim-autoclose" },
+    {
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup()
+        end,
+    },
     -- rainbow parenthesis
     {
         "luochen1990/rainbow",
