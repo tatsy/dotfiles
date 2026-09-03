@@ -82,8 +82,6 @@ fi
 
 # GHQ
 if (( $+commands[ghq] && $+commands[peco] )); then
-    setopt hist_ignore_all_dups
-
     function ghq-list-search() {
         local ghq_select_dir=$(ghq list -p | peco --query "$LBUFFER")
         if [ -n "$ghq_select_dir" ]; then
@@ -97,12 +95,19 @@ if (( $+commands[ghq] && $+commands[peco] )); then
     bindkey '^G' ghq-list-search
 fi
 
+# History
+HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=10000
+
+setopt append_history
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+
 # Completion
 autoload -Uz compinit
 compinit
-
-autoload -Uz bashcompinit
-bashcompinit
 
 # Zoxide
 if (( $+commands[zoxide] )); then
