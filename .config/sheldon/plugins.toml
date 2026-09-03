@@ -35,5 +35,3 @@ github = "chriskempson/base16-shell"
 [plugins.k]
 github = "rimraf/k"
 
-[plugins.starship]
-inline = 'eval "$(starship init zsh)"'

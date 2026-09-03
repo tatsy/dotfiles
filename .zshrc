@@ -1,4 +1,5 @@
 # Aliases
+        ;;
 case "$OSTYPE" in
     darwin*)
         alias ls='ls -G'
@@ -13,14 +14,23 @@ case "$OSTYPE" in
 esac
 
 alias bd='cd ..'
-alias vim=nvim
+
+if (( $+commands[nvim] )); then
+    alias vim=nvim
+fi
 
 # Clang
 case "$OSTYPE" in
     darwin*)
         [[ -d /opt/homebrew/opt/llvm/bin ]] &&
             path=(/opt/homebrew/opt/llvm/bin $path)
-        ;;
+        
+        export LLVM_PREFIX="$(brew --prefix llvm)"
+        export PATH="$LLVM_PREFIX/bin:$PATH"
+        export CC="$LLVM_PREFIX/bin/clang"
+        export CXX="$LLVM_PREFIX/bin/clang++"
+        export CPPFLAGS="-I$LLVM_PREFIX/include"
+        export LDFLAGS="-L$LLVM_PREFIX/lib -L$LLVM_PREFIX/lib/c++"
 esac
 
 # Paths
@@ -59,11 +69,11 @@ export ENHANCD_DISABLE_DOUBLE_DOT="false"
 # Peco
 if (( $+commands[peco] )); then
     function peco-history-selection() {
-        if ! command -v tac &>/dev/null; then
-            alias tac="tail -r"
+        if (( $+commands[tac] )); then
+            BUFFER=$(history -n 1 | tac | awk '!a[$0]++' | peco)
+        else
+            BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | peco)
         fi
-
-        BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco`
         CURSOR=$#BUFFER
         zle reset-prompt
     }
@@ -73,7 +83,7 @@ if (( $+commands[peco] )); then
 fi
 
 # GHQ
-if (( $+commands[ghq] )); then
+if (( $+commands[ghq] && $+commands[peco] )); then
     setopt hist_ignore_all_dups
 
     function ghq-list-search() {
