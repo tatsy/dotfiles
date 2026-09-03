@@ -52,15 +52,30 @@ return {
             scope = { enabled = false },
         },
     },
-    -- visuzalize search position
+    -- visualize search position
     {
-        "osyo-manga/vim-anzu",
-        lazy = false,
+        "kevinhwang91/nvim-hlslens",
         config = function()
-            vim.api.nvim_set_keymap("n", "n", "<Plug>(anzu-n-with-echo", {})
-            vim.api.nvim_set_keymap("n", "N", "<Plug>(anzu-N-with-echo", {})
-            vim.api.nvim_set_keymap("n", "*", "<Plug>(anzu-star)", {})
-            vim.api.nvim_set_keymap("n", "#", "<Plug>(anzu-sharp)", {})
+            local hlslens = require("hlslens")
+            hlslens.setup()
+
+            local keymap_opts = { noremap = true, silent = true }
+            vim.keymap.set("n", "n", function()
+                vim.cmd("normal! " .. vim.v.count1 .. "n")
+                hlslens.start()
+            end, keymap_opts)
+            vim.keymap.set("n", "N", function()
+                vim.cmd("normal! " .. vim.v.count1 .. "N")
+                hlslens.start()
+            end, keymap_opts)
+            vim.keymap.set("n", "*", function()
+                vim.cmd("normal! *")
+                hlslens.start()
+            end, keymap_opts)
+            vim.keymap.set("n", "#", function()
+                vim.cmd("normal! #")
+                hlslens.start()
+            end, keymap_opts)
         end,
     },
     -- useful word selector
