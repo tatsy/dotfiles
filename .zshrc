@@ -31,9 +31,6 @@ path=(
 # Clang
 case "$OSTYPE" in
     darwin*)
-        [[ -d /opt/homebrew/opt/llvm/bin ]] &&
-            path=(/opt/homebrew/opt/llvm/bin $path)
-        
         LLVM_PREFIX="/opt/homebrew/opt/llvm"
         if [[ -d "$LLVM_PREFIX/bin" ]]; then
             path=("$LLVM_PREFIX/bin" $path)
