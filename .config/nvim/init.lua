@@ -1,3 +1,7 @@
+-- disable netrw for nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- base settings
 vim.opt.encoding = "utf-8"
 vim.opt.termguicolors = true

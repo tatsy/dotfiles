@@ -19,6 +19,15 @@ return {
         "akinsho/bufferline.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
+    -- file tree
+    {
+        "nvim-tree/nvim-tree.lua",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("nvim-tree").setup()
+            vim.keymap.set("n", "<C-\\>", "<Cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle file tree" })
+        end,
+    },
     -- helpful for editing
     { "tpope/vim-endwise" },
     { "Townk/vim-autoclose" },
@@ -48,19 +57,6 @@ return {
             vim.api.nvim_set_keymap("n", "N", "<Plug>(anzu-N-with-echo", {})
             vim.api.nvim_set_keymap("n", "*", "<Plug>(anzu-star)", {})
             vim.api.nvim_set_keymap("n", "#", "<Plug>(anzu-sharp)", {})
-        end,
-    },
-    -- nerd tree (and dependencies)
-    {
-        "scrooloose/nerdtree",
-        lazy = true,
-        dependencies = {
-            "ryanoasis/vim-devicons",
-            "tiagofumo/vim-nerdtree-syntax-highlight",
-            "Xuyuanp/nerdtree-git-plugin",
-        },
-        config = function()
-            vim.api.nvim_set_keymap("n", "<C-\\>", ":NERDTreeToggle<CR>", { noremap = true, silent = true })
         end,
     },
     -- useful word selector
