@@ -5,6 +5,17 @@ local parsers = {
     "python",
     "toml",
     "yaml",
+    "zsh",
+}
+
+local filetypes = {
+    "sh",
+    "json",
+    "lua",
+    "python",
+    "toml",
+    "yaml",
+    "zsh",
 }
 
 return {
@@ -16,7 +27,7 @@ return {
             require("nvim-treesitter").install(parsers)
 
             vim.api.nvim_create_autocmd("FileType", {
-                pattern = parsers,
+                pattern = filetypes,
                 callback = function()
                     vim.treesitter.start()
                 end,
