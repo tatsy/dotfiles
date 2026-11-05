@@ -31,7 +31,7 @@ SAVEHIST=10000
 setopt append_history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
-setopt hist_reduce_blanks
+unsetopt hist_reduce_blanks
 
 # History search by prefix (Up/Down)
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
